@@ -1,60 +1,37 @@
 package com.codegym;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ElectricManagement {
-    private BillElectric[] billElectrics = new BillElectric[0];
-
-    public BillElectric[] getBillElectrics() {
-        return billElectrics;
-    }
-
-    public void setBillElectrics(BillElectric[] billElectrics) {
-        this.billElectrics = billElectrics;
-    }
+    private List<BillElectric> billElectrics = new ArrayList<>();
 
     public int size() {
-        return this.billElectrics.length;
+        return this.billElectrics.size();
     }
 
     public void displayAllManagement() {
-        for (int i = 0; i < this.billElectrics.length; i++) {
-            System.out.println(billElectrics[i]);
+        for (int i = 0; i < this.billElectrics.size(); i++) {
+            System.out.println(billElectrics.get(i));
         }
     }
 
     public void addNewBillElectric(int index, BillElectric billElectric) {
-        BillElectric[] newBillElectrics = new BillElectric[this.billElectrics.length + 1];
-        for (int i = 0; i < newBillElectrics.length; i++) {
-            if (i < index) {
-                newBillElectrics[i] = this.billElectrics[i];
-            } else if (index == i) {
-                newBillElectrics[i] = billElectric;
-            } else {
-                newBillElectrics[i] = this.billElectrics[i - 1];
-            }
-        }
-        this.billElectrics = newBillElectrics;
+        billElectrics.add(index, billElectric);
     }
 
     public void updateBillElectric(int index, BillElectric billElectric) {
-        this.billElectrics[index] = billElectric;
+        billElectrics.set(index, billElectric);
     }
 
     public void removeBillElectric(int index) {
-        BillElectric[] newBillElectric = new BillElectric[this.billElectrics.length - 1];
-        for (int i = 0; i < newBillElectric.length; i++) {
-            if (i < index) {
-                newBillElectric[i] = this.billElectrics[i];
-            } else {
-                newBillElectric[i] = this.billElectrics[i + 1];
-            }
-        }
-        this.billElectrics = newBillElectric;
+        billElectrics.remove(index);
     }
 
     public int timKiem(String name) {
         int index = -1;
         for (int i = 0; i < size(); i++) {
-            if (this.billElectrics[i].getName().equals(name)) {
+            if (this.billElectrics.get(i).getName().equals(name)) {
                 index = i;
             }
         }
@@ -62,6 +39,6 @@ public class ElectricManagement {
     }
 
     public double tinhTienDien(int index) {
-        return this.billElectrics[index].getSoTienPhaiTra();
+        return billElectrics.get(index).getSoTienPhaiTra();
     }
 }

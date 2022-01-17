@@ -68,9 +68,11 @@ public class Main {
                     } else {
                         System.out.println("Số tiền phải trả: " + electricManagement.tinhTienDien(index));
                     }
+                    break;
                 }
                 case 0: {
                     System.out.println("---Bạn đã thoát Menu---");
+                    break;
                 }
                 default: {
                     System.out.println("Lựa chọn của bạn không hợp lệ, mời nhập lại ...");
